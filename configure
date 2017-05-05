@@ -1,0 +1,1 @@
+--disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-krb4 --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-vv --disable-avahi --disable-perl --disable-tcl
