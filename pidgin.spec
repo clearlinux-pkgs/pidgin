@@ -6,7 +6,7 @@
 #
 Name     : pidgin
 Version  : 2.12.0
-Release  : 1
+Release  : 2
 URL      : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
 Source0  : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
 Source99 : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2.asc
@@ -25,11 +25,15 @@ BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(NetworkManager)
 BuildRequires : pkgconfig(check)
 BuildRequires : pkgconfig(dbus-1)
+BuildRequires : pkgconfig(dbus-glib-1)
 BuildRequires : pkgconfig(glib-2.0)
+BuildRequires : pkgconfig(gmodule-2.0)
 BuildRequires : pkgconfig(gnutls)
+BuildRequires : pkgconfig(gobject-2.0)
 BuildRequires : pkgconfig(gstreamer-1.0)
 BuildRequires : pkgconfig(gstreamer-app-1.0)
 BuildRequires : pkgconfig(gstreamer-video-1.0)
+BuildRequires : pkgconfig(gthread-2.0)
 BuildRequires : pkgconfig(gtk+-2.0)
 BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(libidn)
@@ -116,7 +120,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1494003026
+export SOURCE_DATE_EPOCH=1506093689
 %configure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-krb4 --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-vv --disable-avahi --disable-perl --disable-tcl
 make V=1  %{?_smp_mflags}
 
@@ -128,7 +132,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1494003026
+export SOURCE_DATE_EPOCH=1506093689
 rm -rf %{buildroot}
 %make_install
 %find_lang pidgin
