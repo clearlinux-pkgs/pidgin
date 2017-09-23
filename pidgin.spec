@@ -6,7 +6,7 @@
 #
 Name     : pidgin
 Version  : 2.12.0
-Release  : 2
+Release  : 3
 URL      : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
 Source0  : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
 Source99 : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2.asc
@@ -19,6 +19,7 @@ Requires: pidgin-data
 Requires: pidgin-locales
 Requires: pidgin-doc
 BuildRequires : GConf-dev
+BuildRequires : ca-certs-static
 BuildRequires : gettext
 BuildRequires : intltool
 BuildRequires : perl(XML::Parser)
@@ -120,8 +121,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506093689
-%configure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-krb4 --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-vv --disable-avahi --disable-perl --disable-tcl
+export SOURCE_DATE_EPOCH=1506128154
+%configure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-krb4 --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-vv --disable-avahi --disable-perl --disable-tcl --disable-missing-dependencies --with-system-ssl-certs=/var/cache/ca-certs/anchors
 make V=1  %{?_smp_mflags}
 
 %check
@@ -132,7 +133,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1506093689
+export SOURCE_DATE_EPOCH=1506128154
 rm -rf %{buildroot}
 %make_install
 %find_lang pidgin
@@ -723,9 +724,6 @@ rm -rf %{buildroot}
 /usr/share/pixmaps/pidgin/tray/hicolor/48x48/status/pidgin-tray-pending.png
 /usr/share/pixmaps/pidgin/tray/hicolor/48x48/status/pidgin-tray-xa.png
 /usr/share/pixmaps/pidgin/tray/hicolor/index.theme
-/usr/share/purple/ca-certs/CAcert_Class3.pem
-/usr/share/purple/ca-certs/CAcert_Root.pem
-/usr/share/purple/ca-certs/mozilla.pem
 /usr/share/sounds/purple/alert.wav
 /usr/share/sounds/purple/login.wav
 /usr/share/sounds/purple/logout.wav
