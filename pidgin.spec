@@ -6,7 +6,7 @@
 #
 Name     : pidgin
 Version  : 2.12.0
-Release  : 4
+Release  : 5
 URL      : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
 Source0  : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
 Source99 : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2.asc
