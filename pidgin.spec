@@ -6,7 +6,7 @@
 #
 Name     : pidgin
 Version  : 2.12.0
-Release  : 3
+Release  : 4
 URL      : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
 Source0  : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
 Source99 : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2.asc
@@ -19,7 +19,7 @@ Requires: pidgin-data
 Requires: pidgin-locales
 Requires: pidgin-doc
 BuildRequires : GConf-dev
-BuildRequires : ca-certs-static
+BuildRequires : ca-certs-static-internal
 BuildRequires : gettext
 BuildRequires : intltool
 BuildRequires : perl(XML::Parser)
