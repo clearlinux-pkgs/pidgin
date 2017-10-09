@@ -1,8 +1,8 @@
-Configure miss: FARSTREAM
-Configure miss: SILC
-Configure miss: SILC
-Configure miss: SILC
-Configure miss: LIBGADU
+Configure miss: farstream-0.2 >= 0.2.7
+Configure miss: silcclient >= 1.1
+Configure miss: silcclient
+Configure miss: silc
+Configure miss: libgadu >= 1.12.0
 Configure miss: pidgin
 Configure miss: me pot o' gold
 Configure miss: sys/msgbuf.h usability

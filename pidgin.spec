@@ -6,7 +6,7 @@
 #
 Name     : pidgin
 Version  : 2.12.0
-Release  : 5
+Release  : 6
 URL      : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
 Source0  : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
 Source99 : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2.asc
@@ -19,9 +19,9 @@ Requires: pidgin-data
 Requires: pidgin-locales
 Requires: pidgin-doc
 BuildRequires : GConf-dev
-BuildRequires : ca-certs-static-internal
 BuildRequires : gettext
 BuildRequires : intltool
+BuildRequires : intltool-dev
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(NetworkManager)
 BuildRequires : pkgconfig(check)
@@ -44,6 +44,8 @@ BuildRequires : pkgconfig(pango)
 BuildRequires : pkgconfig(sm)
 BuildRequires : pkgconfig(sqlite3)
 BuildRequires : pkgconfig(x11)
+BuildRequires : python-dev
+Patch1: 0001-don-t-fail-for-non-existent-with-system-ssl-certs-di.patch
 
 %description
 Pidgin allows you to talk to anyone using a variety of messaging
@@ -115,14 +117,15 @@ locales components for the pidgin package.
 
 %prep
 %setup -q -n pidgin-2.12.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506128154
-%configure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-krb4 --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-vv --disable-avahi --disable-perl --disable-tcl --disable-missing-dependencies --with-system-ssl-certs=/var/cache/ca-certs/anchors
+export SOURCE_DATE_EPOCH=1507587319
+%reconfigure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-krb4 --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-vv --disable-avahi --disable-perl --disable-tcl --disable-missing-dependencies --with-system-ssl-certs=/var/cache/ca-certs/anchors
 make V=1  %{?_smp_mflags}
 
 %check
@@ -133,7 +136,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1506128154
+export SOURCE_DATE_EPOCH=1507587319
 rm -rf %{buildroot}
 %make_install
 %find_lang pidgin
