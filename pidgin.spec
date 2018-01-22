@@ -6,7 +6,7 @@
 #
 Name     : pidgin
 Version  : 2.12.0
-Release  : 7
+Release  : 8
 URL      : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
 Source0  : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
 Source99 : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2.asc
@@ -23,6 +23,7 @@ BuildRequires : farstream-dev
 BuildRequires : gettext
 BuildRequires : intltool
 BuildRequires : intltool-dev
+BuildRequires : libxml2-dev
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(NetworkManager)
 BuildRequires : pkgconfig(check)
@@ -125,9 +126,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1511984975
-%reconfigure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-krb4 --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-avahi --disable-perl --disable-tcl --with-system-ssl-certs=/var/cache/ca-certs/anchors
-make V=1  %{?_smp_mflags}
+export SOURCE_DATE_EPOCH=1516635353
+%reconfigure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-krb4 --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-avahi --disable-perl --disable-tcl --with-system-ssl-certs=/var/cache/ca-certs/anchors --disable-nm
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
@@ -137,7 +138,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1511984975
+export SOURCE_DATE_EPOCH=1516635353
 rm -rf %{buildroot}
 %make_install
 %find_lang pidgin
