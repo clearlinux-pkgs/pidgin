@@ -1,5 +1,5 @@
 PKG_NAME := pidgin
-URL = https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
+URL = https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2
 ARCHIVES = 
 
 include ../common/Makefile.common

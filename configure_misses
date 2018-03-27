@@ -3,6 +3,7 @@ Configure miss: silcclient
 Configure miss: silc
 Configure miss: libgadu >= 1.12.0
 Configure miss: pidgin
+Configure miss: python
 Configure miss: me pot o' gold
 Configure miss: sys/msgbuf.h usability
 Configure miss: sys/msgbuf.h presence

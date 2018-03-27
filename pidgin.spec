@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x75FE259AA8AC8032 (grim@reaperworld.com)
 #
 Name     : pidgin
-Version  : 2.12.0
-Release  : 9
-URL      : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
-Source0  : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2
-Source99 : https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2.asc
+Version  : 2.13.0
+Release  : 10
+URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2
+Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2
+Source99 : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2.asc
 Summary  : A GTK+ based multiprotocol instant messaging client
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -46,7 +46,7 @@ BuildRequires : pkgconfig(pango)
 BuildRequires : pkgconfig(sm)
 BuildRequires : pkgconfig(sqlite3)
 BuildRequires : pkgconfig(x11)
-BuildRequires : python-dev
+BuildRequires : python3-dev
 Patch1: 0001-don-t-fail-for-non-existent-with-system-ssl-certs-di.patch
 
 %description
@@ -118,7 +118,7 @@ locales components for the pidgin package.
 
 
 %prep
-%setup -q -n pidgin-2.12.0
+%setup -q -n pidgin-2.13.0
 %patch1 -p1
 
 %build
@@ -126,7 +126,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1516635353
+export SOURCE_DATE_EPOCH=1522120141
 %reconfigure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-krb4 --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-avahi --disable-perl --disable-tcl --with-system-ssl-certs=/var/cache/ca-certs/anchors --disable-nm
 make  %{?_smp_mflags}
 
@@ -138,7 +138,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1516635353
+export SOURCE_DATE_EPOCH=1522120141
 rm -rf %{buildroot}
 %make_install
 %find_lang pidgin
@@ -149,11 +149,6 @@ rm -rf %{buildroot}
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/pidgin
-/usr/bin/purple-client-example
-/usr/bin/purple-remote
-/usr/bin/purple-send
-/usr/bin/purple-send-async
-/usr/bin/purple-url-handler
 
 %files data
 %defattr(-,root,root,-)
@@ -217,7 +212,6 @@ rm -rf %{buildroot}
 /usr/share/pixmaps/pidgin/arrow-up.xpm
 /usr/share/pixmaps/pidgin/buttons/edit.png
 /usr/share/pixmaps/pidgin/buttons/info.png
-/usr/share/pixmaps/pidgin/buttons/music.png
 /usr/share/pixmaps/pidgin/buttons/pause.png
 /usr/share/pixmaps/pidgin/dialogs/16/auth.png
 /usr/share/pixmaps/pidgin/dialogs/16/error.png
@@ -748,13 +742,7 @@ rm -rf %{buildroot}
 /usr/include/libpurple/connection.h
 /usr/include/libpurple/conversation.h
 /usr/include/libpurple/core.h
-/usr/include/libpurple/dbus-bindings.h
-/usr/include/libpurple/dbus-define-api.h
 /usr/include/libpurple/dbus-maybe.h
-/usr/include/libpurple/dbus-purple.h
-/usr/include/libpurple/dbus-server.h
-/usr/include/libpurple/dbus-types.h
-/usr/include/libpurple/dbus-useful.h
 /usr/include/libpurple/debug.h
 /usr/include/libpurple/desktopitem.h
 /usr/include/libpurple/dnsquery.h
@@ -851,6 +839,7 @@ rm -rf %{buildroot}
 /usr/include/pidgin/gtksourceview-marshal.h
 /usr/include/pidgin/gtkstatus-icon-theme.h
 /usr/include/pidgin/gtkstatusbox.h
+/usr/include/pidgin/gtkstyle.h
 /usr/include/pidgin/gtkthemes.h
 /usr/include/pidgin/gtkutils.h
 /usr/include/pidgin/gtkwhiteboard.h
@@ -858,7 +847,6 @@ rm -rf %{buildroot}
 /usr/include/pidgin/pidgin.h
 /usr/include/pidgin/pidginstock.h
 /usr/include/pidgin/pidgintooltip.h
-/usr/lib64/libpurple-client.so
 /usr/lib64/libpurple.so
 /usr/lib64/pkgconfig/pidgin.pc
 /usr/lib64/pkgconfig/purple.pc
@@ -870,10 +858,8 @@ rm -rf %{buildroot}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libpurple-client.so.0
-/usr/lib64/libpurple-client.so.0.12.0
 /usr/lib64/libpurple.so.0
-/usr/lib64/libpurple.so.0.12.0
+/usr/lib64/libpurple.so.0.13.0
 /usr/lib64/pidgin/convcolors.so
 /usr/lib64/pidgin/extplacement.so
 /usr/lib64/pidgin/gestures.so
@@ -881,7 +867,6 @@ rm -rf %{buildroot}
 /usr/lib64/pidgin/history.so
 /usr/lib64/pidgin/iconaway.so
 /usr/lib64/pidgin/markerline.so
-/usr/lib64/pidgin/musicmessaging.so
 /usr/lib64/pidgin/notify.so
 /usr/lib64/pidgin/pidginrc.so
 /usr/lib64/pidgin/relnot.so
@@ -891,12 +876,12 @@ rm -rf %{buildroot}
 /usr/lib64/pidgin/ticker.so
 /usr/lib64/pidgin/timestamp.so
 /usr/lib64/pidgin/timestamp_format.so
+/usr/lib64/pidgin/transparency.so
 /usr/lib64/pidgin/vvconfig.so
 /usr/lib64/pidgin/xmppconsole.so
 /usr/lib64/pidgin/xmppdisco.so
 /usr/lib64/purple-2/autoaccept.so
 /usr/lib64/purple-2/buddynote.so
-/usr/lib64/purple-2/dbus-example.so
 /usr/lib64/purple-2/idle.so
 /usr/lib64/purple-2/joinpart.so
 /usr/lib64/purple-2/libaim.so
