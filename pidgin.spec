@@ -6,7 +6,7 @@
 #
 Name     : pidgin
 Version  : 2.13.0
-Release  : 11
+Release  : 12
 URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2
 Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2
 Source99 : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2.asc
@@ -19,6 +19,7 @@ Requires: pidgin-data
 Requires: pidgin-locales
 Requires: pidgin-doc
 BuildRequires : GConf-dev
+BuildRequires : ca-certs
 BuildRequires : farstream-dev
 BuildRequires : gettext
 BuildRequires : intltool
@@ -126,8 +127,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522266300
-%reconfigure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-krb4 --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-avahi --disable-perl --disable-tcl --with-system-ssl-certs=/var/cache/ca-certs/anchors --disable-nm --with-python=/usr/bin/python3 --enable-dbus
+export SOURCE_DATE_EPOCH=1522267043
+%reconfigure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-avahi --disable-perl --disable-tcl --with-system-ssl-certs=/var/cache/ca-certs/anchors --disable-nm --with-python=/usr/bin/python3 --enable-dbus
 make  %{?_smp_mflags}
 
 %check
@@ -138,7 +139,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1522266300
+export SOURCE_DATE_EPOCH=1522267043
 rm -rf %{buildroot}
 %make_install
 %find_lang pidgin
