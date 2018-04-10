@@ -3,5 +3,6 @@
 ca-certs
 farstream-dev
 intltool-dev
+libXScrnSaver-dev
 libxml2-dev
 python3

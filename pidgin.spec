@@ -6,7 +6,7 @@
 #
 Name     : pidgin
 Version  : 2.13.0
-Release  : 12
+Release  : 13
 URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2
 Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2
 Source99 : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2.asc
@@ -24,6 +24,7 @@ BuildRequires : farstream-dev
 BuildRequires : gettext
 BuildRequires : intltool
 BuildRequires : intltool-dev
+BuildRequires : libXScrnSaver-dev
 BuildRequires : libxml2-dev
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(NetworkManager)
@@ -127,7 +128,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522267043
+export SOURCE_DATE_EPOCH=1523391919
 %reconfigure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-avahi --disable-perl --disable-tcl --with-system-ssl-certs=/var/cache/ca-certs/anchors --disable-nm --with-python=/usr/bin/python3 --enable-dbus
 make  %{?_smp_mflags}
 
@@ -139,7 +140,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1522267043
+export SOURCE_DATE_EPOCH=1523391919
 rm -rf %{buildroot}
 %make_install
 %find_lang pidgin
