@@ -6,7 +6,7 @@
 #
 Name     : pidgin
 Version  : 2.13.0
-Release  : 16
+Release  : 17
 URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2
 Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2
 Source99 : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2.asc
@@ -16,9 +16,9 @@ License  : GPL-2.0 LGPL-2.1
 Requires: pidgin-bin
 Requires: pidgin-lib
 Requires: pidgin-data
+Requires: pidgin-license
 Requires: pidgin-locales
-Requires: pidgin-doc
-BuildRequires : GConf-dev
+Requires: pidgin-man
 BuildRequires : ca-certs
 BuildRequires : farstream-dev
 BuildRequires : gettext
@@ -69,6 +69,8 @@ Microsoft Corporation, or ICQ Inc.
 Summary: bin components for the pidgin package.
 Group: Binaries
 Requires: pidgin-data
+Requires: pidgin-license
+Requires: pidgin-man
 
 %description bin
 bin components for the pidgin package.
@@ -94,21 +96,22 @@ Provides: pidgin-devel
 dev components for the pidgin package.
 
 
-%package doc
-Summary: doc components for the pidgin package.
-Group: Documentation
-
-%description doc
-doc components for the pidgin package.
-
-
 %package lib
 Summary: lib components for the pidgin package.
 Group: Libraries
 Requires: pidgin-data
+Requires: pidgin-license
 
 %description lib
 lib components for the pidgin package.
+
+
+%package license
+Summary: license components for the pidgin package.
+Group: Default
+
+%description license
+license components for the pidgin package.
 
 
 %package locales
@@ -117,6 +120,14 @@ Group: Default
 
 %description locales
 locales components for the pidgin package.
+
+
+%package man
+Summary: man components for the pidgin package.
+Group: Default
+
+%description man
+man components for the pidgin package.
 
 
 %prep
@@ -128,7 +139,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523391919
+export SOURCE_DATE_EPOCH=1534275809
 %reconfigure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-avahi --disable-perl --disable-tcl --with-system-ssl-certs=/var/cache/ca-certs/anchors --disable-nm --with-python=/usr/bin/python3 --enable-dbus
 make  %{?_smp_mflags}
 
@@ -140,8 +151,13 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1523391919
+export SOURCE_DATE_EPOCH=1534275809
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/pidgin
+cp COPYING %{buildroot}/usr/share/doc/pidgin/COPYING
+cp finch/libgnt/COPYING %{buildroot}/usr/share/doc/pidgin/finch_libgnt_COPYING
+cp libpurple/protocols/gg/lib/COPYING %{buildroot}/usr/share/doc/pidgin/libpurple_protocols_gg_lib_COPYING
+cp libpurple/protocols/oscar/COPYING %{buildroot}/usr/share/doc/pidgin/libpurple_protocols_oscar_COPYING
 %make_install
 %find_lang pidgin
 
@@ -867,10 +883,6 @@ rm -rf %{buildroot}
 /usr/lib64/pkgconfig/purple.pc
 /usr/share/aclocal/*.m4
 
-%files doc
-%defattr(-,root,root,-)
-%doc /usr/share/man/man1/*
-
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libpurple-client.so.0
@@ -926,6 +938,17 @@ rm -rf %{buildroot}
 /usr/lib64/purple-2/ssl-nss.so
 /usr/lib64/purple-2/ssl.so
 /usr/lib64/purple-2/statenotify.so
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/pidgin/COPYING
+/usr/share/doc/pidgin/finch_libgnt_COPYING
+/usr/share/doc/pidgin/libpurple_protocols_gg_lib_COPYING
+/usr/share/doc/pidgin/libpurple_protocols_oscar_COPYING
+
+%files man
+%defattr(-,root,root,-)
+/usr/share/man/man1/pidgin.1
 
 %files locales -f pidgin.lang
 %defattr(-,root,root,-)
