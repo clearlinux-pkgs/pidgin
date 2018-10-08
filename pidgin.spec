@@ -6,19 +6,20 @@
 #
 Name     : pidgin
 Version  : 2.13.0
-Release  : 17
+Release  : 18
 URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2
 Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2
 Source99 : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2.asc
 Summary  : A GTK+ based multiprotocol instant messaging client
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
-Requires: pidgin-bin
-Requires: pidgin-lib
-Requires: pidgin-data
-Requires: pidgin-license
-Requires: pidgin-locales
-Requires: pidgin-man
+Requires: pidgin-bin = %{version}-%{release}
+Requires: pidgin-data = %{version}-%{release}
+Requires: pidgin-lib = %{version}-%{release}
+Requires: pidgin-license = %{version}-%{release}
+Requires: pidgin-locales = %{version}-%{release}
+Requires: pidgin-man = %{version}-%{release}
+BuildRequires : GConf-dev
 BuildRequires : ca-certs
 BuildRequires : farstream-dev
 BuildRequires : gettext
@@ -68,9 +69,9 @@ Microsoft Corporation, or ICQ Inc.
 %package bin
 Summary: bin components for the pidgin package.
 Group: Binaries
-Requires: pidgin-data
-Requires: pidgin-license
-Requires: pidgin-man
+Requires: pidgin-data = %{version}-%{release}
+Requires: pidgin-license = %{version}-%{release}
+Requires: pidgin-man = %{version}-%{release}
 
 %description bin
 bin components for the pidgin package.
@@ -87,10 +88,10 @@ data components for the pidgin package.
 %package dev
 Summary: dev components for the pidgin package.
 Group: Development
-Requires: pidgin-lib
-Requires: pidgin-bin
-Requires: pidgin-data
-Provides: pidgin-devel
+Requires: pidgin-lib = %{version}-%{release}
+Requires: pidgin-bin = %{version}-%{release}
+Requires: pidgin-data = %{version}-%{release}
+Provides: pidgin-devel = %{version}-%{release}
 
 %description dev
 dev components for the pidgin package.
@@ -99,8 +100,8 @@ dev components for the pidgin package.
 %package lib
 Summary: lib components for the pidgin package.
 Group: Libraries
-Requires: pidgin-data
-Requires: pidgin-license
+Requires: pidgin-data = %{version}-%{release}
+Requires: pidgin-license = %{version}-%{release}
 
 %description lib
 lib components for the pidgin package.
@@ -139,7 +140,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1534275809
+export SOURCE_DATE_EPOCH=1539027100
 %reconfigure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-avahi --disable-perl --disable-tcl --with-system-ssl-certs=/var/cache/ca-certs/anchors --disable-nm --with-python=/usr/bin/python3 --enable-dbus
 make  %{?_smp_mflags}
 
@@ -151,13 +152,13 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1534275809
+export SOURCE_DATE_EPOCH=1539027100
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/pidgin
-cp COPYING %{buildroot}/usr/share/doc/pidgin/COPYING
-cp finch/libgnt/COPYING %{buildroot}/usr/share/doc/pidgin/finch_libgnt_COPYING
-cp libpurple/protocols/gg/lib/COPYING %{buildroot}/usr/share/doc/pidgin/libpurple_protocols_gg_lib_COPYING
-cp libpurple/protocols/oscar/COPYING %{buildroot}/usr/share/doc/pidgin/libpurple_protocols_oscar_COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/pidgin
+cp COPYING %{buildroot}/usr/share/package-licenses/pidgin/COPYING
+cp finch/libgnt/COPYING %{buildroot}/usr/share/package-licenses/pidgin/finch_libgnt_COPYING
+cp libpurple/protocols/gg/lib/COPYING %{buildroot}/usr/share/package-licenses/pidgin/libpurple_protocols_gg_lib_COPYING
+cp libpurple/protocols/oscar/COPYING %{buildroot}/usr/share/package-licenses/pidgin/libpurple_protocols_oscar_COPYING
 %make_install
 %find_lang pidgin
 
@@ -941,10 +942,10 @@ cp libpurple/protocols/oscar/COPYING %{buildroot}/usr/share/doc/pidgin/libpurple
 
 %files license
 %defattr(-,root,root,-)
-/usr/share/doc/pidgin/COPYING
-/usr/share/doc/pidgin/finch_libgnt_COPYING
-/usr/share/doc/pidgin/libpurple_protocols_gg_lib_COPYING
-/usr/share/doc/pidgin/libpurple_protocols_oscar_COPYING
+/usr/share/package-licenses/pidgin/COPYING
+/usr/share/package-licenses/pidgin/finch_libgnt_COPYING
+/usr/share/package-licenses/pidgin/libpurple_protocols_gg_lib_COPYING
+/usr/share/package-licenses/pidgin/libpurple_protocols_oscar_COPYING
 
 %files man
 %defattr(-,root,root,-)

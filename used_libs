@@ -18,7 +18,7 @@ libgstreamer-1.0.so.0
 libgstvideo-1.0.so.0
 libgthread-2.0.so.0
 libgtk-x11-2.0.so.0
-libidn.so.11
+libidn.so.12
 libm.so.6
 libnsl.so.1
 libnspr4.so
