@@ -6,11 +6,11 @@
 #
 Name     : pidgin
 Version  : 2.13.0
-Release  : 18
+Release  : 19
 URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2
 Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2
 Source99 : https://sourceforge.net/projects/pidgin/files/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2.asc
-Summary  : A GTK+ based multiprotocol instant messaging client
+Summary  : Multi-protocol instant messaging client
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: pidgin-bin = %{version}-%{release}
@@ -19,6 +19,7 @@ Requires: pidgin-lib = %{version}-%{release}
 Requires: pidgin-license = %{version}-%{release}
 Requires: pidgin-locales = %{version}-%{release}
 Requires: pidgin-man = %{version}-%{release}
+Requires: xdg-utils
 BuildRequires : GConf-dev
 BuildRequires : ca-certs
 BuildRequires : farstream-dev
@@ -140,7 +141,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1539027100
+export SOURCE_DATE_EPOCH=1550590575
 %reconfigure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-avahi --disable-perl --disable-tcl --with-system-ssl-certs=/var/cache/ca-certs/anchors --disable-nm --with-python=/usr/bin/python3 --enable-dbus
 make  %{?_smp_mflags}
 
@@ -152,7 +153,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1539027100
+export SOURCE_DATE_EPOCH=1550590575
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pidgin
 cp COPYING %{buildroot}/usr/share/package-licenses/pidgin/COPYING
@@ -941,14 +942,14 @@ cp libpurple/protocols/oscar/COPYING %{buildroot}/usr/share/package-licenses/pid
 /usr/lib64/purple-2/statenotify.so
 
 %files license
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/package-licenses/pidgin/COPYING
 /usr/share/package-licenses/pidgin/finch_libgnt_COPYING
 /usr/share/package-licenses/pidgin/libpurple_protocols_gg_lib_COPYING
 /usr/share/package-licenses/pidgin/libpurple_protocols_oscar_COPYING
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/pidgin.1
 
 %files locales -f pidgin.lang
