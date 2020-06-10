@@ -1,18 +1,18 @@
 # This file contains pkgconfig build requirements that get picked up
 # but are undesirable. One entry per line, no whitespace.
-unity
-mono
-farstream-0.1
-farstream-0.2
-mozilla-nss
-silc
-silcclient
-microb-engine-nss
 avahi-client
 avahi-glib
+farstream-0.1
+farstream-0.2
+gnt
 gstreamer-0.10
 gstreamer-interfaces-0.10
 gtkspell-2.0
 libgadu
 meanwhile
-
+microb-engine-nss
+mono
+mozilla-nss
+silc
+silcclient
+unity

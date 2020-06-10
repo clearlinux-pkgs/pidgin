@@ -363,6 +363,7 @@ libpurple-client.so.0:purple_find_chat
 libpurple-client.so.0:purple_find_conversation_with_account
 libpurple-client.so.0:purple_find_group
 libpurple-client.so.0:purple_find_prpl
+libpurple-client.so.0:purple_gai_strerror
 libpurple-client.so.0:purple_get_attention_type_from_code
 libpurple-client.so.0:purple_get_blist
 libpurple-client.so.0:purple_get_chats
@@ -746,6 +747,7 @@ libpurple-client.so.0:serv_alias_buddy
 libpurple-client.so.0:serv_chat_invite
 libpurple-client.so.0:serv_chat_leave
 libpurple-client.so.0:serv_chat_send
+libpurple-client.so.0:serv_chat_send_file
 libpurple-client.so.0:serv_chat_whisper
 libpurple-client.so.0:serv_get_info
 libpurple-client.so.0:serv_got_alias
@@ -1521,6 +1523,7 @@ libpurple.so.0:purple_media_backend_set_decryption_parameters
 libpurple.so.0:purple_media_backend_set_encryption_parameters
 libpurple.so.0:purple_media_backend_set_params
 libpurple.so.0:purple_media_backend_set_remote_codecs
+libpurple.so.0:purple_media_backend_set_require_encryption
 libpurple.so.0:purple_media_backend_set_send_codec
 libpurple.so.0:purple_media_backend_set_send_rtcp_mux
 libpurple.so.0:purple_media_candidate_copy
@@ -1584,6 +1587,7 @@ libpurple.so.0:purple_media_is_initiator
 libpurple.so.0:purple_media_manager_create_media
 libpurple.so.0:purple_media_manager_create_output_window
 libpurple.so.0:purple_media_manager_create_private_media
+libpurple.so.0:purple_media_manager_enumerate_elements
 libpurple.so.0:purple_media_manager_get
 libpurple.so.0:purple_media_manager_get_active_element
 libpurple.so.0:purple_media_manager_get_backend_type
@@ -1623,6 +1627,7 @@ libpurple.so.0:purple_media_set_output_window
 libpurple.so.0:purple_media_set_params
 libpurple.so.0:purple_media_set_prpl_data
 libpurple.so.0:purple_media_set_remote_codecs
+libpurple.so.0:purple_media_set_require_encryption
 libpurple.so.0:purple_media_set_send_codec
 libpurple.so.0:purple_media_set_send_rtcp_mux
 libpurple.so.0:purple_media_state_changed_get_type
@@ -2057,6 +2062,7 @@ libpurple.so.0:purple_request_file
 libpurple.so.0:purple_request_folder
 libpurple.so.0:purple_request_get_ui_ops
 libpurple.so.0:purple_request_input
+libpurple.so.0:purple_request_screenshare_media
 libpurple.so.0:purple_request_set_ui_ops
 libpurple.so.0:purple_restore_default_signal_handlers
 libpurple.so.0:purple_roomlist_cancel_get_list
@@ -2150,6 +2156,7 @@ libpurple.so.0:purple_smarshal_VOID__POINTER_POINTER_OBJECT_OBJECT
 libpurple.so.0:purple_smarshal_VOID__STRING_STRING
 libpurple.so.0:purple_smarshal_VOID__STRING_STRING_DOUBLE
 libpurple.so.0:purple_smarshal_VOID__STRING_STRING_OBJECT_OBJECT
+libpurple.so.0:purple_smarshal_VOID__STRING_STRING_POINTER
 libpurple.so.0:purple_smiley_delete
 libpurple.so.0:purple_smiley_get_checksum
 libpurple.so.0:purple_smiley_get_data
@@ -2487,6 +2494,7 @@ libpurple.so.0:serv_alias_buddy
 libpurple.so.0:serv_chat_invite
 libpurple.so.0:serv_chat_leave
 libpurple.so.0:serv_chat_send
+libpurple.so.0:serv_chat_send_file
 libpurple.so.0:serv_chat_whisper
 libpurple.so.0:serv_get_info
 libpurple.so.0:serv_got_alias
