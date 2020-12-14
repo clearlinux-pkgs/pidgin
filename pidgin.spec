@@ -6,7 +6,7 @@
 #
 Name     : pidgin
 Version  : 2.14.1
-Release  : 24
+Release  : 25
 URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.1/pidgin-2.14.1.tar.gz
 Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.1/pidgin-2.14.1.tar.gz
 Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.1/pidgin-2.14.1.tar.gz.asc
