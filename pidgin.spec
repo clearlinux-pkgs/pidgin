@@ -6,7 +6,7 @@
 #
 Name     : pidgin
 Version  : 2.14.1
-Release  : 27
+Release  : 28
 URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.1/pidgin-2.14.1.tar.gz
 Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.1/pidgin-2.14.1.tar.gz
 Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.1/pidgin-2.14.1.tar.gz.asc
@@ -52,6 +52,7 @@ BuildRequires : pkgconfig(x11)
 BuildRequires : python3
 BuildRequires : xdg-utils
 Patch1: 0001-don-t-fail-for-non-existent-with-system-ssl-certs-di.patch
+Patch2: 0002-Fix-build-with-autoconf-2.70.patch
 
 %description
 Pidgin allows you to talk to anyone using a variety of messaging
@@ -136,19 +137,33 @@ man components for the pidgin package.
 %setup -q -n pidgin-2.14.1
 cd %{_builddir}/pidgin-2.14.1
 %patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591889164
+export SOURCE_DATE_EPOCH=1608104781
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
 export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
-%reconfigure --disable-static --disable-unity --disable-mono --disable-consoleui --disable-meanwhile --disable-cyrus-sasl --disable-screensaver --disable-gtkspell --disable-avahi --disable-perl --disable-tcl --with-system-ssl-certs=/var/cache/ca-certs/anchors --disable-nm --with-python=/usr/bin/python3 --enable-dbus
+%reconfigure --disable-static --disable-unity \
+--disable-mono \
+--disable-consoleui \
+--disable-meanwhile \
+--disable-cyrus-sasl \
+--disable-screensaver \
+--disable-gtkspell \
+--disable-avahi \
+--disable-perl \
+--disable-tcl \
+--with-system-ssl-certs=/var/cache/ca-certs/anchors \
+--disable-nm \
+--with-python=/usr/bin/python3 \
+--enable-dbus
 make  %{?_smp_mflags}
 
 %check
@@ -156,10 +171,10 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1591889164
+export SOURCE_DATE_EPOCH=1608104781
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pidgin
 cp %{_builddir}/pidgin-2.14.1/COPYING %{buildroot}/usr/share/package-licenses/pidgin/06877624ea5c77efe3b7e39b0f909eda6e25a4ec

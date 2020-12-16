@@ -1,4 +1,4 @@
-From ec87cd9d493cd7195bca620314c7f4c65f6af4ca Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: "Simental Magana, Marcos" <marcos.simental.magana@intel.com>
 Date: Mon, 9 Oct 2017 17:00:02 -0500
 Subject: [PATCH] don't fail for non-existent --with-system-ssl-certs dir
@@ -13,10 +13,10 @@ Signed-off-by: Simental Magana, Marcos <marcos.simental.magana@intel.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure.ac b/configure.ac
-index b8acd2a..fafc278 100644
+index 24678ee..64c98c5 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1757,7 +1757,7 @@ if ! test -z "$ssl_certificates_dir" ; then
+@@ -1716,7 +1716,7 @@ if ! test -z "$ssl_certificates_dir" ; then
  		AC_MSG_ERROR([--with-system-ssl-certs requires that a location is specified, eg. --with-system-ssl-certs=/etc/pki/tls/certs])
  	fi
  	if ! test -d "$ssl_certificates_dir" ; then
@@ -25,6 +25,3 @@ index b8acd2a..fafc278 100644
  	fi
  	SSL_CERTIFICATES_DIR="$ssl_certificates_dir"
  fi
--- 
-2.14.2
-

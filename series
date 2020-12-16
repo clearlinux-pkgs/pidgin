@@ -1,1 +1,2 @@
 0001-don-t-fail-for-non-existent-with-system-ssl-certs-di.patch
+0002-Fix-build-with-autoconf-2.70.patch
