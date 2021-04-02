@@ -16,7 +16,7 @@ Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure.ac b/configure.ac
-index 64c98c5..f8e3805 100644
+index 0434a35..cec8b7d 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -256,8 +256,8 @@ dnl # Disable creation and installation of translation files
@@ -25,7 +25,7 @@ index 64c98c5..f8e3805 100644
  
 +IT_PROG_INTLTOOL
  if test x$enable_i18n = xyes; then
--	AC_PROG_INTLTOOL
+-AC_PROG_INTLTOOL
  	GETTEXT_PACKAGE=pidgin
  	AC_SUBST(GETTEXT_PACKAGE)
  

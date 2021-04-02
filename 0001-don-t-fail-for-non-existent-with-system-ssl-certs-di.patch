@@ -13,10 +13,10 @@ Signed-off-by: Simental Magana, Marcos <marcos.simental.magana@intel.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure.ac b/configure.ac
-index 24678ee..64c98c5 100644
+index e4368e1..0434a35 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1716,7 +1716,7 @@ if ! test -z "$ssl_certificates_dir" ; then
+@@ -1711,7 +1711,7 @@ if ! test -z "$ssl_certificates_dir" ; then
  		AC_MSG_ERROR([--with-system-ssl-certs requires that a location is specified, eg. --with-system-ssl-certs=/etc/pki/tls/certs])
  	fi
  	if ! test -d "$ssl_certificates_dir" ; then

@@ -1,9 +1,10 @@
-Configure miss: silcclient >= 1.1
-Configure miss: silcclient
-Configure miss: silc
-Configure miss: libgadu >= 1.12.0
-Configure miss: pidgin
-Configure miss: me pot o' gold
-Configure miss: sys/msgbuf.h
 Configure miss: altzone external
+Configure miss: gcc options needed to detect all undeclared functions
+Configure miss: libgadu >= 1.12.0
+Configure miss: me pot o' gold
+Configure miss: pidgin
+Configure miss: silc
+Configure miss: silcclient
+Configure miss: silcclient >= 1.1
+Configure miss: sys/msgbuf.h
 Configure miss: whether va_lists can be copied by value
