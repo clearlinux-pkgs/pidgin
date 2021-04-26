@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x48F66AFFD9BDB729 (grim@reaperworld.com)
 #
 Name     : pidgin
-Version  : 2.14.2
-Release  : 29
-URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.2/pidgin-2.14.2.tar.gz
-Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.2/pidgin-2.14.2.tar.gz
-Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.2/pidgin-2.14.2.tar.gz.asc
+Version  : 2.14.3
+Release  : 30
+URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.3/pidgin-2.14.3.tar.gz
+Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.3/pidgin-2.14.3.tar.gz
+Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.3/pidgin-2.14.3.tar.gz.asc
 Summary  : A GTK+ based multiprotocol instant messaging client
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -56,17 +56,14 @@ Patch2: 0002-Fix-build-with-autoconf-2.70.patch
 
 %description
 Pidgin allows you to talk to anyone using a variety of messaging
-protocols including AIM, XMPP, Bonjour, Gadu-Gadu,
-ICQ, IRC, Novell Groupwise, QQ, Lotus Sametime, SILC, Simple and
+protocols including XMPP, Bonjour, Gadu-Gadu,
+IRC, Novell Groupwise, QQ, Lotus Sametime, SILC, Simple and
 Zephyr.  These protocols are implemented using a modular, easy to
 use design.  To use a protocol, just add an account using the
 account editor.
 
 Pidgin supports many common features of other clients, as well as many
 unique features, such as perl scripting, TCL scripting and C plugins.
-
-Pidgin is not affiliated with or endorsed by America Online, Inc.,
-Microsoft Corporation, or ICQ Inc.
 
 %package bin
 Summary: bin components for the pidgin package.
@@ -134,8 +131,8 @@ man components for the pidgin package.
 
 
 %prep
-%setup -q -n pidgin-2.14.2
-cd %{_builddir}/pidgin-2.14.2
+%setup -q -n pidgin-2.14.3
+cd %{_builddir}/pidgin-2.14.3
 %patch1 -p1
 %patch2 -p1
 
@@ -144,7 +141,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1617335035
+export SOURCE_DATE_EPOCH=1619480516
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -166,20 +163,12 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 --enable-dbus
 make  %{?_smp_mflags}
 
-%check
-export LANG=C.UTF-8
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost,127.0.0.1,0.0.0.0
-make %{?_smp_mflags} check
-
 %install
-export SOURCE_DATE_EPOCH=1617335035
+export SOURCE_DATE_EPOCH=1619480516
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pidgin
-cp %{_builddir}/pidgin-2.14.2/COPYING %{buildroot}/usr/share/package-licenses/pidgin/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/pidgin-2.14.2/libpurple/protocols/gg/lib/COPYING %{buildroot}/usr/share/package-licenses/pidgin/629a679385be1e7896f16847b0708c77da59eb23
-cp %{_builddir}/pidgin-2.14.2/libpurple/protocols/oscar/COPYING %{buildroot}/usr/share/package-licenses/pidgin/3bde08e65bdfdbb30022dbf50c3e75a2f1436db3
+cp %{_builddir}/pidgin-2.14.3/COPYING %{buildroot}/usr/share/package-licenses/pidgin/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/pidgin-2.14.3/libpurple/protocols/gg/lib/COPYING %{buildroot}/usr/share/package-licenses/pidgin/629a679385be1e7896f16847b0708c77da59eb23
 %make_install
 %find_lang pidgin
 
@@ -584,12 +573,10 @@ cp %{_builddir}/pidgin-2.14.2/libpurple/protocols/oscar/COPYING %{buildroot}/usr
 /usr/share/pixmaps/pidgin/emotes/small/working.png
 /usr/share/pixmaps/pidgin/emotes/small/writing.png
 /usr/share/pixmaps/pidgin/logo.png
-/usr/share/pixmaps/pidgin/protocols/16/aim.png
 /usr/share/pixmaps/pidgin/protocols/16/bonjour.png
 /usr/share/pixmaps/pidgin/protocols/16/facebook.png
 /usr/share/pixmaps/pidgin/protocols/16/gadu-gadu.png
 /usr/share/pixmaps/pidgin/protocols/16/google-talk.png
-/usr/share/pixmaps/pidgin/protocols/16/icq.png
 /usr/share/pixmaps/pidgin/protocols/16/irc.png
 /usr/share/pixmaps/pidgin/protocols/16/jabber.png
 /usr/share/pixmaps/pidgin/protocols/16/meanwhile.png
@@ -597,12 +584,10 @@ cp %{_builddir}/pidgin-2.14.2/libpurple/protocols/oscar/COPYING %{buildroot}/usr
 /usr/share/pixmaps/pidgin/protocols/16/silc.png
 /usr/share/pixmaps/pidgin/protocols/16/simple.png
 /usr/share/pixmaps/pidgin/protocols/16/zephyr.png
-/usr/share/pixmaps/pidgin/protocols/22/aim.png
 /usr/share/pixmaps/pidgin/protocols/22/bonjour.png
 /usr/share/pixmaps/pidgin/protocols/22/facebook.png
 /usr/share/pixmaps/pidgin/protocols/22/gadu-gadu.png
 /usr/share/pixmaps/pidgin/protocols/22/google-talk.png
-/usr/share/pixmaps/pidgin/protocols/22/icq.png
 /usr/share/pixmaps/pidgin/protocols/22/irc.png
 /usr/share/pixmaps/pidgin/protocols/22/jabber.png
 /usr/share/pixmaps/pidgin/protocols/22/meanwhile.png
@@ -610,11 +595,9 @@ cp %{_builddir}/pidgin-2.14.2/libpurple/protocols/oscar/COPYING %{buildroot}/usr
 /usr/share/pixmaps/pidgin/protocols/22/silc.png
 /usr/share/pixmaps/pidgin/protocols/22/simple.png
 /usr/share/pixmaps/pidgin/protocols/22/zephyr.png
-/usr/share/pixmaps/pidgin/protocols/48/aim.png
 /usr/share/pixmaps/pidgin/protocols/48/bonjour.png
 /usr/share/pixmaps/pidgin/protocols/48/facebook.png
 /usr/share/pixmaps/pidgin/protocols/48/gadu-gadu.png
-/usr/share/pixmaps/pidgin/protocols/48/icq.png
 /usr/share/pixmaps/pidgin/protocols/48/irc.png
 /usr/share/pixmaps/pidgin/protocols/48/jabber.png
 /usr/share/pixmaps/pidgin/protocols/48/meanwhile.png
@@ -622,11 +605,9 @@ cp %{_builddir}/pidgin-2.14.2/libpurple/protocols/oscar/COPYING %{buildroot}/usr
 /usr/share/pixmaps/pidgin/protocols/48/silc.png
 /usr/share/pixmaps/pidgin/protocols/48/simple.png
 /usr/share/pixmaps/pidgin/protocols/48/zephyr.png
-/usr/share/pixmaps/pidgin/protocols/scalable/aim.svg
 /usr/share/pixmaps/pidgin/protocols/scalable/bonjour.svg
 /usr/share/pixmaps/pidgin/protocols/scalable/gadu-gadu.svg
 /usr/share/pixmaps/pidgin/protocols/scalable/google-talk.svg
-/usr/share/pixmaps/pidgin/protocols/scalable/icq.svg
 /usr/share/pixmaps/pidgin/protocols/scalable/irc.svg
 /usr/share/pixmaps/pidgin/protocols/scalable/jabber.svg
 /usr/share/pixmaps/pidgin/protocols/scalable/meanwhile.svg
@@ -909,9 +890,9 @@ cp %{_builddir}/pidgin-2.14.2/libpurple/protocols/oscar/COPYING %{buildroot}/usr
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libpurple-client.so.0
-/usr/lib64/libpurple-client.so.0.14.2
+/usr/lib64/libpurple-client.so.0.14.3
 /usr/lib64/libpurple.so.0
-/usr/lib64/libpurple.so.0.14.2
+/usr/lib64/libpurple.so.0.14.3
 /usr/lib64/pidgin/convcolors.so
 /usr/lib64/pidgin/extplacement.so
 /usr/lib64/pidgin/gestures.so
@@ -938,17 +919,12 @@ cp %{_builddir}/pidgin-2.14.2/libpurple/protocols/oscar/COPYING %{buildroot}/usr
 /usr/lib64/purple-2/dbus-example.so
 /usr/lib64/purple-2/idle.so
 /usr/lib64/purple-2/joinpart.so
-/usr/lib64/purple-2/libaim.so
 /usr/lib64/purple-2/libgg.so
-/usr/lib64/purple-2/libicq.so
 /usr/lib64/purple-2/libirc.so
 /usr/lib64/purple-2/libjabber.so
 /usr/lib64/purple-2/libjabber.so.0
 /usr/lib64/purple-2/libjabber.so.0.0.0
 /usr/lib64/purple-2/libnovell.so
-/usr/lib64/purple-2/liboscar.so
-/usr/lib64/purple-2/liboscar.so.0
-/usr/lib64/purple-2/liboscar.so.0.0.0
 /usr/lib64/purple-2/libsimple.so
 /usr/lib64/purple-2/libxmpp.so
 /usr/lib64/purple-2/libzephyr.so
@@ -965,7 +941,6 @@ cp %{_builddir}/pidgin-2.14.2/libpurple/protocols/oscar/COPYING %{buildroot}/usr
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/pidgin/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-/usr/share/package-licenses/pidgin/3bde08e65bdfdbb30022dbf50c3e75a2f1436db3
 /usr/share/package-licenses/pidgin/629a679385be1e7896f16847b0708c77da59eb23
 
 %files man
