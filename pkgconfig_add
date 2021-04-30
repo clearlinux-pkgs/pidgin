@@ -1,2 +1,5 @@
 # This file contains additional pkgconfig build requirements that did
 # not get picked up automatically. One name per line, no whitespace.
+libebook-1.2
+libedata-book-1.2
+evolution-data-server-1.2

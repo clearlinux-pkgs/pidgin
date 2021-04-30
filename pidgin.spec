@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x48F66AFFD9BDB729 (grim@reaperworld.com)
 #
 Name     : pidgin
-Version  : 2.14.3
-Release  : 30
-URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.3/pidgin-2.14.3.tar.gz
-Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.3/pidgin-2.14.3.tar.gz
-Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.3/pidgin-2.14.3.tar.gz.asc
+Version  : 2.14.4
+Release  : 31
+URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.4/pidgin-2.14.4.tar.gz
+Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.4/pidgin-2.14.4.tar.gz
+Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.4/pidgin-2.14.4.tar.gz.asc
 Summary  : A GTK+ based multiprotocol instant messaging client
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -32,6 +32,7 @@ BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(check)
 BuildRequires : pkgconfig(dbus-1)
 BuildRequires : pkgconfig(dbus-glib-1)
+BuildRequires : pkgconfig(evolution-data-server-1.2)
 BuildRequires : pkgconfig(gio-unix-2.0)
 BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gmodule-2.0)
@@ -42,6 +43,8 @@ BuildRequires : pkgconfig(gstreamer-app-1.0)
 BuildRequires : pkgconfig(gstreamer-video-1.0)
 BuildRequires : pkgconfig(gthread-2.0)
 BuildRequires : pkgconfig(gtk+-2.0)
+BuildRequires : pkgconfig(libebook-1.2)
+BuildRequires : pkgconfig(libedata-book-1.2)
 BuildRequires : pkgconfig(libidn)
 BuildRequires : pkgconfig(libnm)
 BuildRequires : pkgconfig(libxml-2.0)
@@ -131,8 +134,8 @@ man components for the pidgin package.
 
 
 %prep
-%setup -q -n pidgin-2.14.3
-cd %{_builddir}/pidgin-2.14.3
+%setup -q -n pidgin-2.14.4
+cd %{_builddir}/pidgin-2.14.4
 %patch1 -p1
 %patch2 -p1
 
@@ -141,7 +144,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1619480516
+export SOURCE_DATE_EPOCH=1619760718
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -164,11 +167,11 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1619480516
+export SOURCE_DATE_EPOCH=1619760718
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pidgin
-cp %{_builddir}/pidgin-2.14.3/COPYING %{buildroot}/usr/share/package-licenses/pidgin/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/pidgin-2.14.3/libpurple/protocols/gg/lib/COPYING %{buildroot}/usr/share/package-licenses/pidgin/629a679385be1e7896f16847b0708c77da59eb23
+cp %{_builddir}/pidgin-2.14.4/COPYING %{buildroot}/usr/share/package-licenses/pidgin/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/pidgin-2.14.4/libpurple/protocols/gg/lib/COPYING %{buildroot}/usr/share/package-licenses/pidgin/629a679385be1e7896f16847b0708c77da59eb23
 %make_install
 %find_lang pidgin
 
@@ -186,7 +189,6 @@ cp %{_builddir}/pidgin-2.14.3/libpurple/protocols/gg/lib/COPYING %{buildroot}/us
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/appdata/pidgin.appdata.xml
 /usr/share/applications/pidgin.desktop
 /usr/share/icons/hicolor/16x16/apps/pidgin.png
 /usr/share/icons/hicolor/22x22/apps/pidgin.png
@@ -194,6 +196,7 @@ cp %{_builddir}/pidgin-2.14.3/libpurple/protocols/gg/lib/COPYING %{buildroot}/us
 /usr/share/icons/hicolor/32x32/apps/pidgin.png
 /usr/share/icons/hicolor/48x48/apps/pidgin.png
 /usr/share/icons/hicolor/scalable/apps/pidgin.svg
+/usr/share/metainfo/pidgin.appdata.xml
 /usr/share/pixmaps/pidgin/animations/16/connect0.png
 /usr/share/pixmaps/pidgin/animations/16/connect1.png
 /usr/share/pixmaps/pidgin/animations/16/connect2.png
@@ -890,12 +893,13 @@ cp %{_builddir}/pidgin-2.14.3/libpurple/protocols/gg/lib/COPYING %{buildroot}/us
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libpurple-client.so.0
-/usr/lib64/libpurple-client.so.0.14.3
+/usr/lib64/libpurple-client.so.0.14.4
 /usr/lib64/libpurple.so.0
-/usr/lib64/libpurple.so.0.14.3
+/usr/lib64/libpurple.so.0.14.4
 /usr/lib64/pidgin/convcolors.so
 /usr/lib64/pidgin/extplacement.so
 /usr/lib64/pidgin/gestures.so
+/usr/lib64/pidgin/gevolution.so
 /usr/lib64/pidgin/gtkbuddynote.so
 /usr/lib64/pidgin/history.so
 /usr/lib64/pidgin/iconaway.so
