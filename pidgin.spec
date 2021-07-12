@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x48F66AFFD9BDB729 (grim@reaperworld.com)
 #
 Name     : pidgin
-Version  : 2.14.5
-Release  : 32
-URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.5/pidgin-2.14.5.tar.gz
-Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.5/pidgin-2.14.5.tar.gz
-Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.5/pidgin-2.14.5.tar.gz.asc
+Version  : 2.14.6
+Release  : 33
+URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.6/pidgin-2.14.6.tar.gz
+Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.6/pidgin-2.14.6.tar.gz
+Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.6/pidgin-2.14.6.tar.gz.asc
 Summary  : A GTK+ based multiprotocol instant messaging client
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -48,7 +48,11 @@ BuildRequires : pkgconfig(libedata-book-1.2)
 BuildRequires : pkgconfig(libidn)
 BuildRequires : pkgconfig(libnm)
 BuildRequires : pkgconfig(libxml-2.0)
+BuildRequires : pkgconfig(ncurses)
+BuildRequires : pkgconfig(ncursesw)
 BuildRequires : pkgconfig(nss)
+BuildRequires : pkgconfig(panel)
+BuildRequires : pkgconfig(panelw)
 BuildRequires : pkgconfig(pango)
 BuildRequires : pkgconfig(sqlite3)
 BuildRequires : pkgconfig(x11)
@@ -134,8 +138,8 @@ man components for the pidgin package.
 
 
 %prep
-%setup -q -n pidgin-2.14.5
-cd %{_builddir}/pidgin-2.14.5
+%setup -q -n pidgin-2.14.6
+cd %{_builddir}/pidgin-2.14.6
 %patch1 -p1
 %patch2 -p1
 
@@ -144,7 +148,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1622829573
+export SOURCE_DATE_EPOCH=1626102984
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -167,11 +171,11 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1622829573
+export SOURCE_DATE_EPOCH=1626102984
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pidgin
-cp %{_builddir}/pidgin-2.14.5/COPYING %{buildroot}/usr/share/package-licenses/pidgin/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/pidgin-2.14.5/libpurple/protocols/gg/lib/COPYING %{buildroot}/usr/share/package-licenses/pidgin/629a679385be1e7896f16847b0708c77da59eb23
+cp %{_builddir}/pidgin-2.14.6/COPYING %{buildroot}/usr/share/package-licenses/pidgin/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/pidgin-2.14.6/libpurple/protocols/gg/lib/COPYING %{buildroot}/usr/share/package-licenses/pidgin/629a679385be1e7896f16847b0708c77da59eb23
 %make_install
 %find_lang pidgin
 
@@ -893,9 +897,9 @@ cp %{_builddir}/pidgin-2.14.5/libpurple/protocols/gg/lib/COPYING %{buildroot}/us
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libpurple-client.so.0
-/usr/lib64/libpurple-client.so.0.14.5
+/usr/lib64/libpurple-client.so.0.14.6
 /usr/lib64/libpurple.so.0
-/usr/lib64/libpurple.so.0.14.5
+/usr/lib64/libpurple.so.0.14.6
 /usr/lib64/pidgin/convcolors.so
 /usr/lib64/pidgin/extplacement.so
 /usr/lib64/pidgin/gestures.so
