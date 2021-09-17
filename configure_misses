@@ -1,3 +1,4 @@
+Configure miss: __res_query in -lresolv
 Configure miss: altzone external
 Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: gethostent in -lnsl
