@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x48F66AFFD9BDB729 (grim@reaperworld.com)
 #
 Name     : pidgin
-Version  : 2.14.9
-Release  : 36
-URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.9/pidgin-2.14.9.tar.gz
-Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.9/pidgin-2.14.9.tar.gz
-Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.9/pidgin-2.14.9.tar.gz.asc
+Version  : 2.14.10
+Release  : 37
+URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.10/pidgin-2.14.10.tar.gz
+Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.10/pidgin-2.14.10.tar.gz
+Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.10/pidgin-2.14.10.tar.gz.asc
 Summary  : A GTK+ based multiprotocol instant messaging client
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -137,8 +137,8 @@ man components for the pidgin package.
 
 
 %prep
-%setup -q -n pidgin-2.14.9
-cd %{_builddir}/pidgin-2.14.9
+%setup -q -n pidgin-2.14.10
+cd %{_builddir}/pidgin-2.14.10
 %patch1 -p1
 %patch2 -p1
 
@@ -147,12 +147,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1651249958
+export SOURCE_DATE_EPOCH=1654269218
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$FFLAGS -fno-lto "
-export FFLAGS="$FFLAGS -fno-lto "
-export CXXFLAGS="$CXXFLAGS -fno-lto "
+export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 %reconfigure --disable-static --disable-unity \
 --disable-mono \
 --disable-consoleui \
@@ -170,11 +170,11 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1651249958
+export SOURCE_DATE_EPOCH=1654269218
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pidgin
-cp %{_builddir}/pidgin-2.14.9/COPYING %{buildroot}/usr/share/package-licenses/pidgin/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/pidgin-2.14.9/libpurple/protocols/gg/lib/COPYING %{buildroot}/usr/share/package-licenses/pidgin/629a679385be1e7896f16847b0708c77da59eb23
+cp %{_builddir}/pidgin-2.14.10/COPYING %{buildroot}/usr/share/package-licenses/pidgin/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/pidgin-2.14.10/libpurple/protocols/gg/lib/COPYING %{buildroot}/usr/share/package-licenses/pidgin/629a679385be1e7896f16847b0708c77da59eb23
 %make_install
 %find_lang pidgin
 
@@ -526,6 +526,7 @@ cp %{_builddir}/pidgin-2.14.9/libpurple/protocols/gg/lib/COPYING %{buildroot}/us
 /usr/share/pixmaps/pidgin/emotes/small/excruciating.png
 /usr/share/pixmaps/pidgin/emotes/small/eyeroll.png
 /usr/share/pixmaps/pidgin/emotes/small/girl.png
+/usr/share/pixmaps/pidgin/emotes/small/glasses-cool.png
 /usr/share/pixmaps/pidgin/emotes/small/grumpy.png
 /usr/share/pixmaps/pidgin/emotes/small/happy.png
 /usr/share/pixmaps/pidgin/emotes/small/hot.png
@@ -554,6 +555,7 @@ cp %{_builddir}/pidgin-2.14.9/libpurple/protocols/gg/lib/COPYING %{buildroot}/us
 /usr/share/pixmaps/pidgin/emotes/small/restroom.png
 /usr/share/pixmaps/pidgin/emotes/small/rose.png
 /usr/share/pixmaps/pidgin/emotes/small/sad.png
+/usr/share/pixmaps/pidgin/emotes/small/sarcastic.png
 /usr/share/pixmaps/pidgin/emotes/small/search.png
 /usr/share/pixmaps/pidgin/emotes/small/shame.png
 /usr/share/pixmaps/pidgin/emotes/small/shocked.png
@@ -896,9 +898,9 @@ cp %{_builddir}/pidgin-2.14.9/libpurple/protocols/gg/lib/COPYING %{buildroot}/us
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libpurple-client.so.0
-/usr/lib64/libpurple-client.so.0.14.9
+/usr/lib64/libpurple-client.so.0.14.10
 /usr/lib64/libpurple.so.0
-/usr/lib64/libpurple.so.0.14.9
+/usr/lib64/libpurple.so.0.14.10
 /usr/lib64/pidgin/convcolors.so
 /usr/lib64/pidgin/extplacement.so
 /usr/lib64/pidgin/gestures.so
