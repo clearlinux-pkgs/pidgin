@@ -6,7 +6,7 @@
 #
 Name     : pidgin
 Version  : 2.14.10
-Release  : 37
+Release  : 38
 URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.10/pidgin-2.14.10.tar.gz
 Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.10/pidgin-2.14.10.tar.gz
 Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.10/pidgin-2.14.10.tar.gz.asc
