@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x48F66AFFD9BDB729 (grim@reaperworld.com)
 #
 Name     : pidgin
-Version  : 2.14.10
-Release  : 44
-URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.10/pidgin-2.14.10.tar.gz
-Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.10/pidgin-2.14.10.tar.gz
-Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.10/pidgin-2.14.10.tar.gz.asc
+Version  : 2.14.12
+Release  : 45
+URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.12/pidgin-2.14.12.tar.gz
+Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.12/pidgin-2.14.12.tar.gz
+Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.12/pidgin-2.14.12.tar.gz.asc
 Summary  : A GTK+ based multiprotocol instant messaging client
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -57,6 +57,9 @@ BuildRequires : pkgconfig(pango)
 BuildRequires : pkgconfig(sqlite3)
 BuildRequires : pkgconfig(x11)
 BuildRequires : python3
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 Patch1: 0001-don-t-fail-for-non-existent-with-system-ssl-certs-di.patch
 Patch2: 0002-Fix-build-with-autoconf-2.70.patch
 
@@ -137,8 +140,8 @@ man components for the pidgin package.
 
 
 %prep
-%setup -q -n pidgin-2.14.10
-cd %{_builddir}/pidgin-2.14.10
+%setup -q -n pidgin-2.14.12
+cd %{_builddir}/pidgin-2.14.12
 %patch1 -p1
 %patch2 -p1
 
@@ -147,12 +150,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1664917475
+export SOURCE_DATE_EPOCH=1672687002
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$FFLAGS -fno-lto "
-export FFLAGS="$FFLAGS -fno-lto "
-export CXXFLAGS="$CXXFLAGS -fno-lto "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 %reconfigure --disable-static --disable-unity \
 --disable-mono \
 --disable-consoleui \
@@ -170,7 +173,7 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1664917475
+export SOURCE_DATE_EPOCH=1672687002
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pidgin
 cp %{_builddir}/pidgin-%{version}/COPYING %{buildroot}/usr/share/package-licenses/pidgin/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
@@ -898,9 +901,9 @@ cp %{_builddir}/pidgin-%{version}/libpurple/protocols/gg/lib/COPYING %{buildroot
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libpurple-client.so.0
-/usr/lib64/libpurple-client.so.0.14.10
+/usr/lib64/libpurple-client.so.0.14.12
 /usr/lib64/libpurple.so.0
-/usr/lib64/libpurple.so.0.14.10
+/usr/lib64/libpurple.so.0.14.12
 /usr/lib64/pidgin/convcolors.so
 /usr/lib64/pidgin/extplacement.so
 /usr/lib64/pidgin/gestures.so
