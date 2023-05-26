@@ -6,7 +6,7 @@
 #
 Name     : pidgin
 Version  : 2.14.12
-Release  : 52
+Release  : 53
 URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.12/pidgin-2.14.12.tar.gz
 Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.12/pidgin-2.14.12.tar.gz
 Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.12/pidgin-2.14.12.tar.gz.asc
