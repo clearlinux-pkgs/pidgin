@@ -2,6 +2,8 @@ Configure miss: __res_query in -lresolv
 Configure miss: __res_query in -lresolv
 Configure miss: altzone external
 Configure miss: altzone external
+Configure miss: gcc option to enable large file support
+Configure miss: gcc option to enable large file support
 Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: gethostent in -lnsl
