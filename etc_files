@@ -1,0 +1,6 @@
+/etc/:
+/etc/gconf/schemas:
+/etc/gconf:
+gconf
+purple.schemas
+schemas

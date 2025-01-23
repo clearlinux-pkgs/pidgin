@@ -1,5 +1,3 @@
-libX11.so.6
-libatk-1.0.so.0
 libc.so.6
 libcairo.so.2
 libdbus-1.so.3
@@ -10,7 +8,6 @@ libedataserver-1.2.so.27
 libfarstream-0.2.so.5
 libgdk-x11-2.0.so.0
 libgdk_pixbuf-2.0.so.0
-libgio-2.0.so.0
 libglib-2.0.so.0
 libgmodule-2.0.so.0
 libgnutls.so.30
