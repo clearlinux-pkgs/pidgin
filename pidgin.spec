@@ -9,7 +9,7 @@
 #
 Name     : pidgin
 Version  : 2.14.14
-Release  : 78
+Release  : 79
 URL      : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.14/pidgin-2.14.14.tar.gz
 Source0  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.14/pidgin-2.14.14.tar.gz
 Source1  : https://sourceforge.net/projects/pidgin/files/Pidgin/2.14.14/pidgin-2.14.14.tar.gz.asc
